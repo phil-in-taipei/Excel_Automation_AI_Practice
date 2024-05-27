@@ -1,4 +1,5 @@
 import openpyxl
+import shutil
 
 esl_lesson_plans = [
   { "section": "Vocabulary", "learning_target": "describing places", "actual_content": "big/small, clean/dirty" },
@@ -29,12 +30,15 @@ esl_lesson_plans = [
   # Last two items
 
   { "section": "Vocabulary", "learning_target": "colors", "actual_content": "red/blue, yellow/green" },
-  { "section": "Vocabulary", "learning_target": "clothes", "actual_content": "shirt/pants, shoes/hat" },
-
   # Three additional items
   { "section": "Grammar", "learning_target": "past tense (regular verbs)", "actual_content": "played/watched" },
   { "section": "Reading Comprehension", "learning_target": "making inferences", "actual_content": "because/so" },
   { "section": "Speaking", "learning_target": "giving opinions", "actual_content": "I like/I don't like" },
+
+  {"section": "Vocabulary", "learning_target": "clothes", "actual_content": "shirt/pants, shoes/hat"},
+
+  {"section": "Grammar", "learning_target": "perfect tense (regular verbs)", "actual_content": "have/had done/eaten"},
+  {"section": "Reading Comprehension", "learning_target": "special announcements", "actual_content": "effective immediately..."},
 ]
 
 
@@ -62,6 +66,7 @@ def insert_lesson_plans(filename, lesson_plans, start_row=9):
   row_index = start_row
   for plan in lesson_plans:
     worksheet.cell(row=row_index, column=3).value = plan["section"]
+    worksheet.cell(row=row_index, column=4).value = "50 mins"
     worksheet.cell(row=row_index, column=5).value = plan["learning_target"]
     worksheet.cell(row=row_index, column=6).value = plan["actual_content"]
     row_index += 1
@@ -72,19 +77,14 @@ def insert_lesson_plans(filename, lesson_plans, start_row=9):
 
 
 # Example usage
-filename = "[TLI]_Blizzard_Learning_program.xlsx"
+filename = "[TLI]Blizzard_Learning_program_25_classes.xlsx"
 
 # Remember to replace this with your actual backup directory path
-backup_directory = "/home/sweeneyphilip11/TLI_Schedule/backup_directory"
+backup_directory = "/home/thinkpad/Documents/Python_Excel_Automation/Excel_Automation_AI_Practice/backup_directory"
 
 # Create a backup of the original file (consider using libraries like shutil for robust copying)
-import shutil
 shutil.copy(filename, f"{backup_directory}/{filename}")  # Example using shutil.copy
 
 insert_lesson_plans(filename, esl_lesson_plans)
 
 
-# Example usage
-filename = "[TLI]_Blizzard_Learning_program.xlsx"
-
-insert_lesson_plans(filename, esl_lesson_plans)
