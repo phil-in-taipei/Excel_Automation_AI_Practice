@@ -77,10 +77,10 @@ def insert_lesson_plans(filename, lesson_plans, start_row=9):
 
 
 # Example usage
-filename = "[TLI]Blizzard_Learning_program_25_classes.xlsx"
+filename = "[TLI]_Blizzard_Learning_program_25_classes.xlsx"
 
 # Remember to replace this with your actual backup directory path
-backup_directory = "/home/thinkpad/Documents/Python_Excel_Automation/Excel_Automation_AI_Practice/backup_directory"
+backup_directory = "/home/sweeneyphilip11/TLI_Schedule/backup_directory"
 
 # Create a backup of the original file (consider using libraries like shutil for robust copying)
 shutil.copy(filename, f"{backup_directory}/{filename}")  # Example using shutil.copy
